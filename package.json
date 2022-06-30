@@ -1,0 +1,29 @@
+{
+  "name": "kiwi-contract",
+  "version": "1.0.0",
+  "description": "Kiwi helps writing SkyeKiwi smart contracts",
+  "scripts": {
+    "random-seed": "./node_modules/.bin/zx ./scripts/random_seed.mjs",
+    "contract:compile": "./node_modules/.bin/zx ./scripts/contract_compile.mjs",
+    "contract:test": "./node_modules/.bin/zx ./scripts/contract_test.mjs",
+    "chain:create-account": "./node_modules/.bin/zx ./scripts/chain_create_account.mjs",
+    "chain:deploy": "./node_modules/.bin/zx ./scripts/chain_deploy.mjs",
+    "chain:interact": "./node_modules/.bin/zx ./scripts/chain_interact.mjs"
+  },
+  "author": "SkyeKiwi Team <hello@skye.kiwi>",
+  "license": "MIT",
+  "dependencies": {
+    "@polkadot/api": "^8.5.1",
+    "@polkadot/util-crypto": "^9.2.1",
+    "@polkadot/wasm-crypto": "^6.1.1",
+    "@skyekiwi/ipfs": "0.7.7-4",
+    "@skyekiwi/s-contract": "0.7.7-4",
+    "@skyekiwi/util": "0.7.7-4",
+    "chalk": "^5.0.1",
+    "dotenv": "^16.0.0",
+    "zx": "^7.0.4"
+  },
+  "devDependencies": {
+   
+  }
+}
