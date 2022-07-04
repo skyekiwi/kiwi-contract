@@ -22,7 +22,7 @@ const main = async () => {
     $`yarn contract:compile`;
 
     // upload the souce code to IPFS
-    const wasmBlob = fs.readFileSync('./src/res/status_message.wasm');
+    const wasmBlob = fs.readFileSync('./contract/res/status_message.wasm');
     const cid = await IPFS.add(u8aToHex(wasmBlob));
     
     console.log("WASM Bytes Uploaded", chalk.yellow(cid.cid.toString()));

@@ -3,7 +3,7 @@ import 'zx/globals'
 import { Keyring } from '@polkadot/keyring'
 import { Call, Calls, buildCalls, baseDecode, parseOutcomes } from '@skyekiwi/s-contract';
 import { ApiPromise, WsProvider } from '@polkadot/api';
-import { cryptoWaitReady, blake2AsU8a } from '@polkadot/util-crypto';
+import { cryptoWaitReady, blake2AsU8a, decodeAddress } from '@polkadot/util-crypto';
 
 import chalk from 'chalk';
 
@@ -43,7 +43,7 @@ const main = async () => {
                 contract_name: stringToU8a(CONTRACT_NAME),
                 amount: null,
                 method: stringToU8a('set_status'),
-                args: stringToU8a(JSON.stringify({message: "I'm writing this msg!"})),
+                args: stringToU8a(JSON.stringify({message: "Change name again"})),
             }),
             new Call({
                 origin_public_key: keypair.publicKey,
@@ -55,8 +55,20 @@ const main = async () => {
                 amount: null,
                 method: stringToU8a('get_status'),
                 args: stringToU8a(JSON.stringify({account_id: u8aToHex(keypair.publicKey)})),
-              }),
+            }),
+            new Call({
+                origin_public_key: keypair.publicKey,
+                receipt_public_key: blake2AsU8a(CONTRACT_NAME),
+                encrypted_egress: false,
+    
+                transaction_action: 3,
+                contract_name: stringToU8a(CONTRACT_NAME),
+                amount: null,
+                method: stringToU8a('get_status'),
+                args: stringToU8a(JSON.stringify({account_id: u8aToHex(decodeAddress('5FEUorjS7nVnca5YFcmRAmPFS3ojHxjFXop8abdhpRG8z1ty'))})),
+            }),
         ],
+
 
         block_number: 0,
         shard_id: 0,

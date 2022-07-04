@@ -33,4 +33,4 @@ driver/mock/*.file
 local/
 output
 packages/driver/mock/file.file
-src/target
+contract/target

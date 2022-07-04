@@ -1,5 +1,5 @@
 # KiwiContract 
-Your toolkit for writing secret smart contracts
+Your toolkit for writing private smart contracts on SkyeKiwi
 
 ## Commands
 
@@ -20,5 +20,6 @@ Your toolkit for writing secret smart contracts
 The Config file is located at `./scripts/config.mjs`
 
 `rpcEndpoint`: `ws://127.0.0.1:9944` for local testnet, `wss://staging.rpc.skye.kiwi` for the Alpha Public Testnet of SkyeKiwi
+
 `contractName`: name of the contract
 
