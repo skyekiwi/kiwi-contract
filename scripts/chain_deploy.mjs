@@ -22,10 +22,11 @@ const main = async () => {
     $`yarn contract:compile`;
 
     // upload the souce code to IPFS
-    const wasmBlob = fs.readFileSync('./contract/res/status_message.wasm');
-    const cid = await IPFS.add(u8aToHex(wasmBlob));
+    const wasmBlobRaw = fs.readFileSync('./contract/res/status_message.wasm');
+    const wasmBlob = '0x' + u8aToHex(new Uint8Array(wasmBlobRaw));
+    // const cid = await IPFS.add(u8aToHex(wasmBlob));
     
-    console.log("WASM Bytes Uploaded", chalk.yellow(cid.cid.toString()));
+    // console.log("WASM Bytes Uploaded", chalk.yellow(cid.cid.toString()));
 
     const wsProvider = new WsProvider(scriptConfig.rpcEndpoint);
     const api = await ApiPromise.create({provider: wsProvider});
@@ -39,7 +40,6 @@ const main = async () => {
     }).addFromUri(seed);
 
     console.log("Your on-chain address is", chalk.yellow(keypair.address));
-
 
     const CONTRACT_NAME = scriptConfig.contractName;
     const initialCalls = new Calls({
@@ -63,7 +63,7 @@ const main = async () => {
     const encodedCall = '0x' + u8aToHex(new Uint8Array(baseDecode( buildCalls(initialCalls) ))) ;
 
     const deploymentCall = api.tx.sContract.registerContract(
-        CONTRACT_NAME, cid.cid.toString(), encodedCall, 0
+        CONTRACT_NAME, wasmBlob , encodedCall, 0
     );
 
     await sendTx(deploymentCall, keypair, true);

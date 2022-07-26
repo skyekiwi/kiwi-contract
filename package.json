@@ -16,9 +16,11 @@
     "@polkadot/api": "^8.5.1",
     "@polkadot/util-crypto": "^9.2.1",
     "@polkadot/wasm-crypto": "^6.1.1",
+
     "@skyekiwi/ipfs": "0.7.7-4",
     "@skyekiwi/s-contract": "0.7.7-4",
     "@skyekiwi/util": "0.7.7-4",
+    
     "chalk": "^5.0.1",
     "dotenv": "^16.0.0",
     "zx": "^7.0.4"
